@@ -4,8 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#090A0D">
-  <meta name="description" content="PRIMAL Products: un ecosistema de experiencias de entrenamiento. Explora PRIMAL Boxing, Fitness, Height Training, Gear y Club. Boxing disponible ahora.">
+  <meta name="description" content="PRIMAL Products: un ecosistema de experiencias de entrenamiento. Explora PRIMAL Boxing, Fitness, Weight Training, Running, Gear y Club. Boxing disponible ahora.">
   <title>PRIMAL Products — Built to go further</title>
+  <!-- Vista previa al compartir la página en WhatsApp, Facebook y redes sociales -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="PRIMAL Products">
+  <meta property="og:url" content="https://primalproducts.com.co/">
+  <meta property="og:title" content="PRIMAL Products | Built to go further">
+  <meta property="og:description" content="Un ecosistema de entrenamiento, tecnología y comunidad. PRIMAL Boxing ya está disponible. Descubre el universo PRIMAL.">
+  <meta property="og:image" content="https://primalproducts.com.co/primal-share.jpg">
+  <meta property="og:image:secure_url" content="https://primalproducts.com.co/primal-share.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Emblema blanco de PRIMAL sobre una atmósfera roja y negra">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PRIMAL Products | Built to go further">
+  <meta name="twitter:description" content="PRIMAL Boxing y el universo PRIMAL: entrenamiento, tecnología y comunidad.">
+  <meta name="twitter:image" content="https://primalproducts.com.co/primal-share.jpg">
+
   <link rel="icon" type="image/png" href="primal-icon.png">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');
@@ -234,6 +251,13 @@
       .principle{grid-template-columns:48px 1fr}.cta-band{padding:54px 0}
     }
     @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn{transition:none}}
+
+    /* PRIMAL Boxing: imagen completa y proporcionada, sin recortar los golpes ni el texto */
+    .flagship-visual{min-height:0;padding:20px;background:radial-gradient(circle at center,#301016 0%,#101114 68%)}
+    .flagship-photo{position:relative;inset:auto;display:block;width:100%;height:auto;max-height:360px;object-fit:contain;object-position:center;border-radius:2px}
+    .flagship-visual::after{display:none}
+    @media(max-width:900px){.flagship-visual{min-height:0;padding:18px}}
+    @media(max-width:560px){.flagship-visual{min-height:0;padding:12px}.flagship-photo{max-height:none}}
   </style>
 </head>
 <body>
@@ -314,10 +338,10 @@
     <div class="container">
       <div class="section-head reveal">
         <div>
-          <div class="eyebrow">El ecosistema · 01 activo + 4 en desarrollo</div>
+          <div class="eyebrow">El ecosistema · 01 activo + 5 en desarrollo</div>
           <h2>EL UNIVERSO<br><em>PRIMAL.</em></h2>
         </div>
-        <p>Cinco líneas, una misma filosofía: entrenar con intención. PRIMAL Boxing ya está disponible; Fitness, Height Training, Gear y Club son conceptos del ecosistema que todavía están en desarrollo.</p>
+        <p>Seis líneas, una misma filosofía: entrenar con intención. PRIMAL Boxing ya está disponible; Fitness, Weight Training, Running, Gear y Club son conceptos del ecosistema que todavía están en desarrollo.</p>
       </div>
 
       <div class="ecosystem-active reveal">
@@ -356,11 +380,21 @@
         </article>
 
         <article class="future-card reveal" aria-disabled="true">
-          <div class="future-photo-wrap"><img class="future-photo" src="height.webp" alt="Imagen inspiradora de PRIMAL Height Training" loading="lazy" decoding="async"></div>
+          <div class="future-photo-wrap"><img class="future-photo" src="weight.webp" alt="Fisicoculturista entrenando con mancuerna en el gimnasio" loading="lazy" decoding="async"></div>
           <div class="future-card-content">
           <div class="future-index">05.</div>
-          <h3>PRIMAL<br>HEIGHT TRAINING</h3>
-          <p>Una futura experiencia de acondicionamiento y resistencia inspirada en los desafíos del entrenamiento en altura, con sesiones progresivas y objetivos de rendimiento. Concepto en desarrollo.</p>
+          <h3>PRIMAL<br>WEIGHT TRAINING</h3>
+          <p>Una futura experiencia de entrenamiento de fuerza en el gimnasio, con ejercicios de pesas, series, repeticiones y rutinas organizadas según tus objetivos y tu progreso.</p>
+          </div>
+          <span class="soon">Próximamente</span>
+        </article>
+
+        <article class="future-card reveal" aria-disabled="true">
+          <div class="future-photo-wrap"><img class="future-photo" src="running.webp" alt="Corredor entrenando al aire libre en una ruta de montaña" loading="lazy" decoding="async"></div>
+          <div class="future-card-content">
+            <div class="future-index">06.</div>
+            <h3>PRIMAL<br>RUNNING</h3>
+            <p>Una futura experiencia para corredores de todos los niveles, con planes de carrera, sesiones de velocidad y resistencia, seguimiento de distancias y metas de progreso.</p>
           </div>
           <span class="soon">Próximamente</span>
         </article>
@@ -449,17 +483,18 @@
     "Grabación de sesión": "Session recording",
     "Trofeos y progreso": "Trophies and progress",
     "Entrar al ring": "Step into the ring",
-    "El ecosistema · 01 activo + 4 en desarrollo": "The ecosystem · 01 live + 4 in development",
+    "El ecosistema · 01 activo + 5 en desarrollo": "The ecosystem · 01 live + 5 in development",
     "EL UNIVERSO": "THE PRIMAL",
     "PRIMAL.": "UNIVERSE.",
-    "Cinco líneas, una misma filosofía: entrenar con intención. PRIMAL Boxing ya está disponible; Fitness, Height Training, Gear y Club son conceptos del ecosistema que todavía están en desarrollo.": "Five lines, one philosophy: train with purpose. PRIMAL Boxing is available now; Fitness, Height Training, Gear, and Club are concepts still in development.",
+    "Seis líneas, una misma filosofía: entrenar con intención. PRIMAL Boxing ya está disponible; Fitness, Weight Training, Running, Gear y Club son conceptos del ecosistema que todavía están en desarrollo.": "Six lines, one philosophy: train with purpose. PRIMAL Boxing is available now; Fitness, Weight Training, Running, Gear, and Club are concepts still in development.",
     "01 · DISPONIBLE AHORA": "01 · AVAILABLE NOW",
     "Entrenamiento de boxeo desde el navegador: rounds configurables, combinaciones guiadas por voz, grabación de sesiones y logros. Entra al ring desde cualquier lugar.": "Browser-based boxing training: customizable rounds, voice-guided combinations, session recording, and achievements. Step into the ring from anywhere.",
     "Explorar PRIMAL Boxing": "Explore PRIMAL Boxing",
     "Una línea de entrenamiento físico integral con rutinas de fuerza, movilidad, resistencia y acondicionamiento, pensada para complementar el boxeo y acompañar distintos objetivos de actividad.": "A full-body training line with strength, mobility, endurance, and conditioning routines, designed to complement boxing and support a range of fitness goals.",
     "La futura línea de accesorios, indumentaria y equipamiento deportivo del ecosistema PRIMAL. Diseñada para llevar la identidad de entrenamiento más allá de la pantalla.": "A future line of sports accessories, apparel, and equipment from the PRIMAL ecosystem, bringing the training identity beyond the screen.",
     "Un espacio pensado para conectar a quienes entrenan con PRIMAL: retos compartidos, hitos personales, reconocimientos y nuevas experiencias de comunidad.": "A space for people who train with PRIMAL to connect through shared challenges, personal milestones, recognition, and new community experiences.",
-    "Una futura experiencia de acondicionamiento y resistencia inspirada en los desafíos del entrenamiento en altura, con sesiones progresivas y objetivos de rendimiento. Concepto en desarrollo.": "A future conditioning and endurance experience inspired by the challenges of high-altitude training, with progressive sessions and performance goals. Concept in development.",
+    "Una futura experiencia de entrenamiento de fuerza en el gimnasio, con ejercicios de pesas, series, repeticiones y rutinas organizadas según tus objetivos y tu progreso.": "A future gym strength-training experience with weights, sets, reps, and structured workout routines based on your goals and progress.",
+    "Una futura experiencia para corredores de todos los niveles, con planes de carrera, sesiones de velocidad y resistencia, seguimiento de distancias y metas de progreso.": "A future experience for runners of all levels, featuring running plans, speed and endurance sessions, distance tracking, and progress goals.",
     "Próximamente": "Coming soon",
     "Nuestra filosofía": "Our philosophy",
     "PRIMAL Products nace para convertir la tecnología en una experiencia de entrenamiento más directa, accesible y emocionante.": "PRIMAL Products was created to make technology part of a more direct, accessible, and exciting training experience.",
@@ -492,7 +527,8 @@
     ['img[src="fitness.webp"]','alt','Imagen inspiradora de PRIMAL Fitness','Inspirational PRIMAL Fitness image'],
     ['img[src="gear.webp"]','alt','Imagen inspiradora de PRIMAL Gear','Inspirational PRIMAL Gear image'],
     ['img[src="club.webp"]','alt','Imagen inspiradora de PRIMAL Club','Inspirational PRIMAL Club image'],
-    ['img[src="height.webp"]','alt','Imagen inspiradora de PRIMAL Height Training','Inspirational PRIMAL Height Training image']
+    ['img[src="weight.webp"]','alt','Fisicoculturista entrenando con mancuerna en el gimnasio','Bodybuilder training with a dumbbell at the gym'],
+    ['img[src="running.webp"]','alt','Corredor entrenando al aire libre en una ruta de montaña','Runner training outdoors on a mountain trail']
   ];
   function switchLanguage(lang) {
     const isEnglish = lang === 'en';
@@ -507,8 +543,8 @@
     document.querySelectorAll('#languageSwitch button').forEach(btn => btn.setAttribute('aria-pressed',String(btn.dataset.lang === lang)));
     document.documentElement.lang = lang;
     document.querySelector('meta[name="description"]').content = isEnglish
-      ? 'PRIMAL Products: a training experience ecosystem. Discover PRIMAL Boxing, Fitness, Height Training, Gear and Club. Boxing available now.'
-      : 'PRIMAL Products: un ecosistema de experiencias de entrenamiento. Explora PRIMAL Boxing, Fitness, Height Training, Gear y Club. Boxing disponible ahora.';
+      ? 'PRIMAL Products: a training experience ecosystem. Discover PRIMAL Boxing, Fitness, Weight Training, Running, Gear and Club. Boxing available now.'
+      : 'PRIMAL Products: un ecosistema de experiencias de entrenamiento. Explora PRIMAL Boxing, Fitness, Weight Training, Running, Gear y Club. Boxing disponible ahora.';
     try { localStorage.setItem('primal-language', lang); } catch(e) {}
   }
   document.querySelectorAll('#languageSwitch button').forEach(btn => btn.addEventListener('click', () => switchLanguage(btn.dataset.lang)));
