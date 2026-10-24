@@ -183,7 +183,10 @@
     .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px}
     .cta-band .eyebrow{color:#fff}.cta-band .eyebrow::before{background:#fff}
     .cta-band h2{font-size:clamp(56px,7.6vw,94px);margin:9px 0 0;color:#fff}
-    .cta-band .btn{background:#0B0C0F;white-space:nowrap}.cta-band .btn:hover{background:#222328}
+    .cta-band .btn{background:transparent;white-space:nowrap;color:#fff}
+    .cta-band .btn::before{background:linear-gradient(90deg,#08090b,#111216 55%,#08090b);box-shadow:none}
+    .cta-band .btn::after{background:linear-gradient(90deg,rgba(255,255,255,.10),transparent 55%);opacity:.24}
+    .cta-band .btn:hover{background:transparent;filter:brightness(1.25)}
 
     footer{padding:34px 0;background:#090A0D;border-top:1px solid #1D1E22;text-align:center}
     footer p{margin:0;color:#777880;font-size:11px;letter-spacing:.8px}
