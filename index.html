@@ -54,19 +54,53 @@
     .navlinks{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:700}
     .navlinks>a:not(.btn){color:#D4D4D7;transition:.2s ease}
     .navlinks>a:not(.btn):hover{color:#fff}
-    .mobile-toggle{display:none;border:1px solid var(--line2);background:transparent;color:#fff;width:42px;height:42px;cursor:pointer}
+    .mobile-toggle{display:none;position:relative;border:1px solid var(--line2);background:transparent;color:#fff;width:46px;height:42px;cursor:pointer;padding:0}
+    .mobile-toggle .bar{position:absolute;left:10px;right:10px;height:2px;background:#fff;transition:transform .22s ease,opacity .18s ease,top .22s ease}
+    .mobile-toggle .bar:nth-child(1){top:12px}
+    .mobile-toggle .bar:nth-child(2){top:19px}
+    .mobile-toggle .bar:nth-child(3){top:26px}
+    .mobile-toggle.open .bar:nth-child(1){top:19px;transform:rotate(45deg)}
+    .mobile-toggle.open .bar:nth-child(2){opacity:0}
+    .mobile-toggle.open .bar:nth-child(3){top:19px;transform:rotate(-45deg)}
 
     .btn{
+      --brush1:#ff5148;
+      --brush2:#c1171f;
       display:inline-flex;align-items:center;justify-content:center;gap:10px;
-      min-height:50px;padding:0 22px;border:1px solid transparent;
-      background:var(--red);color:#fff;text-transform:uppercase;
-      font:800 13px/1 var(--body);letter-spacing:.7px;cursor:pointer;
-      transition:transform .18s ease,background .18s ease,border-color .18s ease
+      min-height:62px;padding:0 34px;border:0;background:transparent;color:#fff;text-transform:uppercase;
+      font:900 13px/1 var(--body);letter-spacing:1px;cursor:pointer;position:relative;isolation:isolate;
+      transition:transform .18s ease,filter .18s ease,color .18s ease;
+      text-shadow:0 1px 0 rgba(0,0,0,.2)
     }
-    .btn:hover{background:#FF4945;transform:translateY(-2px)}
-    .btn.ghost{background:transparent;border-color:#666871}
-    .btn.ghost:hover{background:#FFFFFF0D;border-color:#E8E8EB}
-    .btn.disabled{background:#202126;color:#71727A;border-color:#2E2F35;cursor:not-allowed;pointer-events:none}
+    .btn::before,
+    .btn::after{content:"";position:absolute;inset:0;z-index:-1;transition:transform .18s ease,opacity .18s ease,background .18s ease}
+    .btn::before{
+      background:linear-gradient(90deg,var(--brush2),var(--brush1) 58%,#ff8177);
+      -webkit-mask-image:url('brush-stroke.png');
+      mask-image:url('brush-stroke.png');
+      -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+      -webkit-mask-position:center; mask-position:center;
+      -webkit-mask-size:100% 100%; mask-size:100% 100%;
+      box-shadow:0 18px 30px rgba(185,20,28,.20);
+    }
+    .btn::after{
+      inset:5px 8px;
+      background:linear-gradient(90deg,rgba(255,255,255,.22),rgba(255,255,255,0) 36%,rgba(255,255,255,.1) 100%);
+      -webkit-mask-image:url('brush-stroke.png');
+      mask-image:url('brush-stroke.png');
+      -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat;
+      -webkit-mask-position:center; mask-position:center;
+      -webkit-mask-size:100% 100%; mask-size:100% 100%;
+      opacity:.45;
+    }
+    .btn:hover{transform:translateY(-2px) scale(1.01);filter:saturate(1.08)}
+    .btn:hover::before{transform:scale(1.01)}
+    .btn.ghost{color:#fff}
+    .btn.ghost::before{background:linear-gradient(90deg,#9d1118,#d41d25 58%,#ff5e56)}
+    .btn.ghost::after{opacity:.35}
+    .btn.disabled{color:#C7A2A4;cursor:not-allowed;pointer-events:none}
+    .btn.disabled::before{background:linear-gradient(90deg,#5f1a1e,#7b2227,#5f1a1e);box-shadow:none;opacity:.55}
+    .btn.disabled::after{opacity:.12}
 
     .hero{
       position:relative;min-height:570px;display:flex;align-items:center;overflow:hidden;
@@ -118,7 +152,7 @@
     .mock-phone .mock-round{font-size:10px;font-weight:900;letter-spacing:2px;color:var(--red)}
     .mock-phone .mock-line{height:6px;background:linear-gradient(90deg,var(--red) 46%,#414248 46%);margin:26px 0}
     .mock-phone .mock-combo{font:900 25px/1.05 var(--display)}
-    .mock-phone .mock-play{width:58px;height:58px;border-radius:50%;margin:26px auto 0;background:var(--red);display:grid;place-items:center;font-size:22px}
+    .mock-phone .mock-play{width:58px;height:58px;border-radius:50%;margin:26px auto 0;background:var(--red);display:grid;place-items:center;position:relative}.mock-phone .mock-play::before{content:"";width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:16px solid #fff;margin-left:4px}
 
     .universe{padding-top:0}
     .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
@@ -185,13 +219,13 @@
       <span class="brand-copy">PRIMAL <b>PRODUCTS</b><small>BUILT TO GO FURTHER</small></span>
     </a>
 
-    <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú">☰</button>
+    <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
 
     <nav class="navlinks" id="navigation" aria-label="Principal">
       <a href="#boxing">PRIMAL Boxing</a>
       <a href="#universo">Universo PRIMAL</a>
       <a href="#filosofia">Filosofía</a>
-      <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Entrenar ahora ↗</a>
+      <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Entrenar ahora</a>
     </nav>
   </div>
 </header>
@@ -204,8 +238,8 @@
         <h1>UN UNIVERSO.<br><em>INFINITAS FORMAS</em><br>DE SUPERARTE.</h1>
         <p class="intro">PRIMAL Products reúne experiencias digitales, entrenamiento, equipamiento y comunidad en un solo ecosistema. <strong>PRIMAL Boxing</strong> abre el camino: nuestro primer producto disponible para entrenar hoy.</p>
         <div class="hero-actions">
-          <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">▶ Entrar a PRIMAL Boxing</a>
-          <a class="btn ghost" href="#universo">Explora el ecosistema ↓</a>
+          <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Entrar a PRIMAL Boxing</a>
+          <a class="btn ghost" href="#universo">Explora el ecosistema</a>
         </div>
         <p class="hero-note">Disponible desde el navegador · Sin registro · Entrena a tu ritmo</p>
       </div>
@@ -235,7 +269,7 @@
             <span>Grabación de sesión</span>
             <span>Trofeos y progreso</span>
           </div>
-          <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Entrar al ring ↗</a>
+          <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Entrar al ring</a>
         </div>
 
         <div class="flagship-visual">
@@ -246,7 +280,7 @@
             <div class="mock-round">ROUND 04 / 08</div>
             <div class="mock-line"></div>
             <div class="mock-combo">YAB · YAB · RECTO</div>
-            <div class="mock-play">▶</div>
+            <div class="mock-play"></div>
           </div>
         </div>
       </article>
@@ -265,7 +299,7 @@
 
       <div class="ecosystem-active reveal">
         <div><span class="ecosystem-tag">01 · DISPONIBLE AHORA</span><h3>PRIMAL <em>BOXING</em></h3><p>Entrenamiento de boxeo desde el navegador: rounds configurables, combinaciones guiadas por voz, grabación de sesiones y logros. Entra al ring desde cualquier lugar.</p></div>
-        <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Explorar PRIMAL Boxing ↗</a>
+        <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Explorar PRIMAL Boxing</a>
       </div>
       <div class="product-grid">
         <article class="future-card reveal" aria-disabled="true">
@@ -322,7 +356,7 @@
         <div class="eyebrow">Disponible ahora</div>
         <h2>TU SIGUIENTE ROUND<br>EMPIEZA HOY.</h2>
       </div>
-      <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Abrir PRIMAL Boxing ↗</a>
+      <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Abrir PRIMAL Boxing</a>
     </div>
   </section>
 </main>
@@ -342,15 +376,15 @@
   toggle.addEventListener('click', () => {
     const open = nav.classList.toggle('open');
     document.body.classList.toggle('menu-open', open);
+    toggle.classList.toggle('open', open);
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.textContent = open ? '✕' : '☰';
   });
 
   nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
     nav.classList.remove('open');
     document.body.classList.remove('menu-open');
+    toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
-    toggle.textContent = '☰';
   }));
 
   if ('IntersectionObserver' in window) {
