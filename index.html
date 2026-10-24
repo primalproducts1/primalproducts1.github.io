@@ -1,48 +1,371 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0d0d10" />
-  <meta name="description" content="Conoce los productos de PRIMAL Products. Entrena con PRIMAL Boxing y descubre lo que viene." />
-  <title>PRIMAL Products | Nuestros productos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090A0D">
+  <meta name="description" content="PRIMAL Products: un ecosistema de experiencias de entrenamiento. Explora PRIMAL Boxing, Fitness, Height Training, Gear y Club. Boxing disponible ahora.">
+  <title>PRIMAL Products — Built to go further</title>
+  <link rel="icon" type="image/png" href="primal-icon.png">
   <style>
-    :root{color-scheme:dark;--bg:#0d0d10;--surface:#19191d;--border:#333338;--text:#fafafa;--muted:#aaaab3;--red:#ec242c}
-    *{box-sizing:border-box}html{min-height:100%}body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(ellipse at 50% -25%,#3b1519 0%,var(--bg) 55%);color:var(--text)}
-    .shell{width:min(100% - 40px,800px);margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
-    header{padding:30px 0;display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #ffffff16}
-    .brand{font-size:20px;font-weight:900;letter-spacing:-.8px;text-decoration:none;color:#fff}.brand span{color:var(--red)}
-    .eyebrow{font-size:11px;letter-spacing:2px;color:#d6d6d9;font-weight:800;text-transform:uppercase}
-    main{flex:1;padding:80px 0 70px;display:flex;flex-direction:column;align-items:center;text-align:center}
-    h1{font-size:clamp(37px,7vw,68px);letter-spacing:-2.7px;line-height:1.04;margin:23px 0 15px;font-weight:900}h1 span{color:var(--red)}
-    .intro{max-width:470px;font-size:16px;line-height:1.65;color:var(--muted);margin:0 0 40px}
-    .products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;width:100%;text-align:left}
-    .product{min-height:165px;padding:24px;border:1px solid var(--border);border-radius:17px;display:flex;flex-direction:column;gap:12px;background:var(--surface);text-decoration:none;color:inherit;position:relative;transition:background .2s,border-color .2s,transform .2s}
-    a.product:hover{border-color:var(--red);background:#23191b;transform:translateY(-2px)}a.product:focus-visible{outline:3px solid #ff8084;outline-offset:4px}
-    .product-header{display:flex;align-items:center;justify-content:space-between;gap:12px}.product-icon{height:40px;width:40px;display:grid;place-items:center;border-radius:12px;background:#352024;color:#ff686e}.product-icon svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-    .status{font-size:10px;letter-spacing:.5px;font-weight:750;border:1px solid #ffffff25;border-radius:20px;padding:6px 9px;color:#bcbcc5}.live .status{color:#ffb8bb;border-color:#79363b;background:#452023}
-    .product h2{font-size:21px;letter-spacing:-.6px;margin:2px 0 0}.product p{font-size:13px;line-height:1.45;color:var(--muted);margin:0}.product .arrow{position:absolute;right:23px;bottom:23px;font-size:20px;color:#ff767b}.product:not(.live){opacity:.58;cursor:not-allowed}.product:not(.live) .product-icon{background:#2a2a30;color:#b4b4bf}
-    footer{text-align:center;padding:24px 0 28px;border-top:1px solid #ffffff16;font-size:12px;color:#888890}
-    @media(max-width:560px){.shell{width:min(100% - 32px,800px)}header{padding:23px 0}.brand{font-size:18px}.eyebrow{font-size:9px}main{padding:67px 0 58px}h1{letter-spacing:-1.7px}.products{grid-template-columns:1fr}.product{min-height:150px;padding:22px}.intro{font-size:15px}}
+    @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Sans:wght@400;500;600;700;800&display=swap');
+
+    :root{
+      --bg:#090A0D;
+      --surface:#141519;
+      --surface2:#101115;
+      --line:#2B2C32;
+      --line2:#3A3B42;
+      --red:#EE302D;
+      --red2:#B9141C;
+      --white:#F7F6F2;
+      --muted:#A4A5AC;
+      --display:'Barlow Condensed',Impact,'Arial Narrow',sans-serif;
+      --body:'DM Sans',Arial,sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--white);font-family:var(--body);overflow-x:hidden}
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img{display:block;max-width:100%}
+    ::selection{background:var(--red);color:#fff}
+    .container{width:min(1180px,calc(100% - 44px));margin-inline:auto}
+    .topline{height:4px;background:linear-gradient(90deg,var(--red2),var(--red),#ff6a5e,var(--red))}
+
+    header{
+      position:sticky;top:0;z-index:50;
+      background:rgba(9,10,13,.90);
+      backdrop-filter:blur(18px);
+      border-bottom:1px solid rgba(255,255,255,.08)
+    }
+    .nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:inline-flex;align-items:center;gap:12px;min-width:0}
+    .brand-icon{
+      width:39px;height:47px;object-fit:contain;object-position:center;
+      filter:drop-shadow(0 0 12px rgba(238,48,45,.16));
+      flex:0 0 auto;
+    }
+    .brand-copy{font:900 27px/1 var(--display);letter-spacing:.8px;white-space:nowrap}
+    .brand-copy b{color:var(--red);font-weight:900}
+    .brand-copy small{display:block;margin-top:5px;font:700 8px/1.2 var(--body);letter-spacing:3.6px;color:#8F9097}
+    .navlinks{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:700}
+    .navlinks>a:not(.btn){color:#D4D4D7;transition:.2s ease}
+    .navlinks>a:not(.btn):hover{color:#fff}
+    .mobile-toggle{display:none;border:1px solid var(--line2);background:transparent;color:#fff;width:42px;height:42px;cursor:pointer}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:50px;padding:0 22px;border:1px solid transparent;
+      background:var(--red);color:#fff;text-transform:uppercase;
+      font:800 13px/1 var(--body);letter-spacing:.7px;cursor:pointer;
+      transition:transform .18s ease,background .18s ease,border-color .18s ease
+    }
+    .btn:hover{background:#FF4945;transform:translateY(-2px)}
+    .btn.ghost{background:transparent;border-color:#666871}
+    .btn.ghost:hover{background:#FFFFFF0D;border-color:#E8E8EB}
+    .btn.disabled{background:#202126;color:#71727A;border-color:#2E2F35;cursor:not-allowed;pointer-events:none}
+
+    .hero{
+      position:relative;min-height:570px;display:flex;align-items:center;overflow:hidden;
+      background:
+        radial-gradient(circle at 81% 45%,rgba(238,48,45,.24),transparent 29%),
+        radial-gradient(circle at 72% 53%,rgba(185,20,28,.12),transparent 48%),
+        linear-gradient(140deg,#121317 0%,#090A0D 58%,#060709 100%);
+    }
+    .hero::before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:repeating-linear-gradient(112deg,transparent 0,transparent 124px,rgba(255,255,255,.025) 125px,rgba(255,255,255,.025) 126px)
+    }
+    .hero::after{
+      content:'PRIMAL';position:absolute;left:-4vw;bottom:-12vw;
+      font:900 clamp(220px,34vw,560px)/.78 var(--display);letter-spacing:-.04em;
+      color:rgba(255,255,255,.025);pointer-events:none;white-space:nowrap
+    }
+    .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr;align-items:center;gap:0;padding:104px 0 106px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;text-transform:uppercase;font-size:11px;font-weight:800;letter-spacing:2.7px;color:#E6E6E8}
+    .eyebrow::before{content:"";width:26px;height:3px;background:var(--red)}
+    h1,h2,h3,p{margin-top:0}
+    h1,h2,h3{font-family:var(--display);text-transform:uppercase}
+    h1{font-size:clamp(82px,10.8vw,154px);font-weight:900;line-height:.77;letter-spacing:-.02em;margin:28px 0 30px}
+    h1 em,h2 em{font-style:normal;color:var(--red)}
+    .intro{max-width:720px;color:#C4C5CB;font-size:18px;line-height:1.68}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+    .hero-note{margin:20px 0 0;color:#8F9097;font-size:12px}
+
+    .section{padding:104px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:42px;margin-bottom:40px}
+    h2{font-size:clamp(54px,7.2vw,91px);font-weight:900;line-height:.86;letter-spacing:-.015em;margin:16px 0 0}
+    .section-head>p{max-width:430px;color:var(--muted);font-size:14px;line-height:1.75;margin:0}
+
+    .flagship{display:grid;grid-template-columns:1.06fr .94fr;border:1px solid #414249;background:linear-gradient(130deg,#17181D,#0D0E11);overflow:hidden;min-height:500px}
+    .flagship-content{padding:clamp(32px,5vw,68px);align-self:center}
+    .status{display:inline-flex;align-items:center;gap:8px;text-transform:uppercase;font-size:10px;font-weight:800;letter-spacing:1.9px;color:#FF918E;border:1px solid #883038;padding:9px 11px;margin-bottom:22px}
+    .status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px rgba(238,48,45,.12)}
+    .flagship h3{font:900 clamp(68px,7.5vw,108px)/.82 var(--display);margin:0 0 20px}
+    .flagship p{max-width:490px;color:#B8B9BF;line-height:1.72;font-size:16px}
+    .features{display:flex;gap:8px;flex-wrap:wrap;margin:27px 0 32px}
+    .features span{font-size:11px;font-weight:700;color:#D9D9DC;border:1px solid #414249;padding:9px 11px}
+    .flagship-visual{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:500px;background:radial-gradient(circle at 54% 43%,rgba(238,48,45,.55),rgba(92,17,24,.2) 36%,transparent 65%),linear-gradient(145deg,#271014,#0B0C0F)}
+    .flagship-visual::before{content:"";position:absolute;width:430px;aspect-ratio:1;border:1px solid rgba(255,255,255,.1);transform:rotate(27deg)}
+    .flagship-icon{width:195px;height:290px;object-fit:contain;opacity:.16;position:absolute;right:25px;bottom:-25px;transform:rotate(8deg)}
+    .mock-phone{width:238px;height:425px;border:8px solid #202126;border-radius:34px;background:#08090B;box-shadow:25px 35px 80px rgba(0,0,0,.58);transform:rotate(-9deg);padding:27px 16px;position:relative;z-index:3;text-align:center}
+    .mock-phone::before{content:"";position:absolute;top:7px;left:50%;transform:translateX(-50%);width:72px;height:13px;background:#202126;border-radius:20px}
+    .mock-phone small{font-size:9px;font-weight:900;letter-spacing:1px}
+    .mock-phone .mock-time{font:900 78px/1 var(--display);margin-top:65px}
+    .mock-phone .mock-round{font-size:10px;font-weight:900;letter-spacing:2px;color:var(--red)}
+    .mock-phone .mock-line{height:6px;background:linear-gradient(90deg,var(--red) 46%,#414248 46%);margin:26px 0}
+    .mock-phone .mock-combo{font:900 25px/1.05 var(--display)}
+    .mock-phone .mock-play{width:58px;height:58px;border-radius:50%;margin:26px auto 0;background:var(--red);display:grid;place-items:center;font-size:22px}
+
+    .universe{padding-top:0}
+    .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .ecosystem-active{display:flex;justify-content:space-between;align-items:center;gap:32px;padding:32px 38px;margin-bottom:16px;border:1px solid rgba(238,48,45,.55);background:linear-gradient(110deg,#271216,#131317 66%)}
+    .ecosystem-active h3{font:900 clamp(38px,5vw,64px)/.95 var(--display);margin:10px 0 12px}.ecosystem-active h3 em{color:var(--red);font-style:normal}
+    .ecosystem-active p{color:#b8b9bf;font-size:14px;line-height:1.7;max-width:680px;margin:0}.ecosystem-active .btn{flex-shrink:0}
+    .ecosystem-tag{font-size:10px;font-weight:800;letter-spacing:2px;color:#ff8986}
+    .future-card{position:relative;min-height:340px;padding:28px;border:1px solid #2E2F35;background:linear-gradient(145deg,#121317,#0D0E11);overflow:hidden;isolation:isolate}
+    .future-card::before{content:"";position:absolute;width:210px;aspect-ratio:1;border:1px solid rgba(255,255,255,.055);right:-78px;top:-62px;transform:rotate(28deg);z-index:-1}
+    .future-index{font:900 46px var(--display);color:#3E3F46}
+    .future-card h3{font-size:42px;line-height:.9;margin:39px 0 15px;color:#E4E4E6}
+    .future-card p{font-size:13px;line-height:1.7;color:#a2a3ab;max-width:430px;padding-bottom:23px}
+    .soon{position:absolute;left:28px;bottom:27px;display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:900;letter-spacing:1.6px;text-transform:uppercase;color:#818289}
+    .soon::before{content:"";width:8px;height:8px;border-radius:50%;background:#4C4D53}
+    .future-card[aria-disabled="true"]{cursor:not-allowed;user-select:none}
+    .future-card[aria-disabled="true"]::after{content:"COMING SOON";position:absolute;right:-41px;top:28px;transform:rotate(38deg);background:#23242A;color:#777880;border:1px solid #34353B;padding:8px 48px;font-size:9px;font-weight:900;letter-spacing:1.5px}
+
+    .philosophy{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0E0F12}
+    .philosophy-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:start}
+    .philosophy-copy p{font-size:16px;line-height:1.8;color:#B6B7BD;max-width:530px}
+    .principles{display:grid;gap:0;border-top:1px solid #34353A}
+    .principle{display:grid;grid-template-columns:70px 1fr;gap:10px;padding:27px 0;border-bottom:1px solid #34353A}
+    .principle .num{font:900 30px var(--display);color:#5B5C63}
+    .principle h3{font-size:31px;margin:0 0 7px}
+    .principle p{margin:0;color:#8F9097;font-size:13px;line-height:1.65}
+
+    .cta-band{background:var(--red);padding:66px 0}
+    .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:28px}
+    .cta-band .eyebrow{color:#fff}.cta-band .eyebrow::before{background:#fff}
+    .cta-band h2{font-size:clamp(56px,7.6vw,94px);margin:9px 0 0;color:#fff}
+    .cta-band .btn{background:#0B0C0F;white-space:nowrap}.cta-band .btn:hover{background:#222328}
+
+    footer{padding:34px 0;background:#090A0D;border-top:1px solid #1D1E22;text-align:center}
+    footer p{margin:0;color:#777880;font-size:11px;letter-spacing:.8px}
+
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    @media (max-width:900px){
+      .nav{height:68px}.mobile-toggle{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:22px;background:#101115;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:18px}.navlinks.open{display:flex}
+      .hero{min-height:auto}.hero-grid{grid-template-columns:1fr;padding:72px 0 78px}
+      .section{padding:78px 0}.section-head{display:block}.section-head>p{margin-top:20px}
+      .flagship{grid-template-columns:1fr}.flagship-visual{min-height:460px}
+      .product-grid{grid-template-columns:1fr}.future-card{min-height:280px}.ecosystem-active{align-items:flex-start;flex-direction:column;padding:28px}.ecosystem-active .btn{width:100%}
+      .philosophy-grid{grid-template-columns:1fr;gap:34px}
+      .cta-inner{display:block}.cta-band .btn{margin-top:25px}
+    }
+    @media (max-width:560px){
+      .container{width:min(100% - 30px,1180px)}
+      .brand-icon{width:32px;height:40px}.brand-copy{font-size:23px}.brand-copy small{letter-spacing:2.8px;font-size:7px}
+      h1{font-size:clamp(72px,22vw,108px)}.intro{font-size:16px}.hero-actions{display:grid}.hero-actions .btn{width:100%}
+      .flagship-content{padding:34px 24px}.flagship h3{font-size:70px}.flagship-visual{min-height:420px}.mock-phone{width:210px;height:385px}.mock-phone .mock-time{font-size:68px}
+      .principle{grid-template-columns:48px 1fr}.cta-band{padding:54px 0}
+    }
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.btn{transition:none}}
   </style>
 </head>
 <body>
-  <div class="shell">
-    <header><a href="/" class="brand" aria-label="PRIMAL Products inicio">PRIMAL <span style="color:#fff;font-weight:500">Products</span></a><span class="eyebrow">MOVE BEYOND</span></header>
-    <main>
-      <h1>Conoce nuestros <span>productos.</span></h1>
-      <p class="intro">Experiencias creadas para moverte, entrenar y superar tus límites. Elige por dónde quieres comenzar.</p>
-      <section class="products" aria-label="Productos PRIMAL">
-        <a class="product live" href="http://primalproducts.com.co/Primal-Boxing/" aria-label="Abrir PRIMAL Boxing">
-          <div class="product-header"><span class="product-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 10V7a3 3 0 0 1 3-3h3v4h3a3 3 0 0 1 3 3v4a5 5 0 0 1-5 5h-4a5 5 0 0 1-5-5v-5z"/><path d="M9 8v3M12 8v3M15 11v3M8 16h7"/></svg></span><span class="status">DISPONIBLE</span></div>
-          <h2>PRIMAL Boxing</h2><p>Tu entrenamiento de boxeo, a tu ritmo.</p><span class="arrow" aria-hidden="true">↗</span>
-        </a>
-        <div class="product" aria-disabled="true"><div class="product-header"><span class="product-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9v6M7 6v12M17 6v12M21 9v6M7 12h10"/></svg></span><span class="status">PRÓXIMAMENTE</span></div><h2>PRIMAL Fitness</h2><p>Entrena fuerza y condición física.</p></div>
-        <div class="product" aria-disabled="true"><div class="product-header"><span class="product-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 6h16l-1 13H5L4 6zM8 6V4h8v2M9 11h6M9 15h6"/></svg></span><span class="status">PRÓXIMAMENTE</span></div><h2>PRIMAL Gear</h2><p>Equipamiento y accesorios para entrenar.</p></div>
-        <div class="product" aria-disabled="true"><div class="product-header"><span class="product-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m12 2 3 7h7l-5.5 5 2 8-6.5-4-6.5 4 2-8L2 9h7z"/></svg></span><span class="status">PRÓXIMAMENTE</span></div><h2>PRIMAL Club</h2><p>Una comunidad para llevar tus metas más lejos.</p></div>
-      </section>
-    </main>
-    <footer>2026 PRIMALproducts</footer>
+<div class="topline"></div>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#inicio" aria-label="PRIMAL Products, inicio">
+      <img class="brand-icon" src="primal-icon.png" alt="Símbolo PRIMAL">
+      <span class="brand-copy">PRIMAL <b>PRODUCTS</b><small>BUILT TO GO FURTHER</small></span>
+    </a>
+
+    <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú">☰</button>
+
+    <nav class="navlinks" id="navigation" aria-label="Principal">
+      <a href="#boxing">PRIMAL Boxing</a>
+      <a href="#universo">Universo PRIMAL</a>
+      <a href="#filosofia">Filosofía</a>
+      <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Entrenar ahora ↗</a>
+    </nav>
   </div>
+</header>
+
+<main>
+  <section class="hero" id="inicio">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <div class="eyebrow">PRIMAL Products · Digital training experiences</div>
+        <h1>UN UNIVERSO.<br><em>INFINITAS FORMAS</em><br>DE SUPERARTE.</h1>
+        <p class="intro">PRIMAL Products reúne experiencias digitales, entrenamiento, equipamiento y comunidad en un solo ecosistema. <strong>PRIMAL Boxing</strong> abre el camino: nuestro primer producto disponible para entrenar hoy.</p>
+        <div class="hero-actions">
+          <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">▶ Entrar a PRIMAL Boxing</a>
+          <a class="btn ghost" href="#universo">Explora el ecosistema ↓</a>
+        </div>
+        <p class="hero-note">Disponible desde el navegador · Sin registro · Entrena a tu ritmo</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section" id="boxing">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Producto principal</div>
+          <h2>PRIMAL<br><em>BOXING.</em></h2>
+        </div>
+        <p>Una experiencia de boxeo guiada por voz para practicar combinaciones, configurar rounds y mantenerte enfocado en la pelea.</p>
+      </div>
+
+      <article class="flagship reveal">
+        <div class="flagship-content">
+          <span class="status">Disponible ahora</span>
+          <h3>PELEA<br>A TU RITMO.</h3>
+          <p>Configura tu entrenamiento, escucha las combinaciones, avanza round a round y lleva la experiencia contigo desde el navegador.</p>
+          <div class="features">
+            <span>Combinaciones guiadas</span>
+            <span>Rounds configurables</span>
+            <span>Voz durante el entrenamiento</span>
+            <span>Grabación de sesión</span>
+            <span>Trofeos y progreso</span>
+          </div>
+          <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Entrar al ring ↗</a>
+        </div>
+
+        <div class="flagship-visual">
+          <img class="flagship-icon" src="primal-icon.png" alt="" aria-hidden="true">
+          <div class="mock-phone" aria-hidden="true">
+            <small>PRIMAL BOXING</small>
+            <div class="mock-time">01:42</div>
+            <div class="mock-round">ROUND 04 / 08</div>
+            <div class="mock-line"></div>
+            <div class="mock-combo">YAB · YAB · RECTO</div>
+            <div class="mock-play">▶</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section universe" id="universo">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">El ecosistema · 01 activo + 4 en desarrollo</div>
+          <h2>EL UNIVERSO<br><em>PRIMAL.</em></h2>
+        </div>
+        <p>Cinco líneas, una misma filosofía: entrenar con intención. PRIMAL Boxing ya está disponible; Fitness, Height Training, Gear y Club son conceptos del ecosistema que todavía están en desarrollo.</p>
+      </div>
+
+      <div class="ecosystem-active reveal">
+        <div><span class="ecosystem-tag">01 · DISPONIBLE AHORA</span><h3>PRIMAL <em>BOXING</em></h3><p>Entrenamiento de boxeo desde el navegador: rounds configurables, combinaciones guiadas por voz, grabación de sesiones y logros. Entra al ring desde cualquier lugar.</p></div>
+        <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Explorar PRIMAL Boxing ↗</a>
+      </div>
+      <div class="product-grid">
+        <article class="future-card reveal" aria-disabled="true">
+          <div class="future-index">02.</div>
+          <h3>PRIMAL<br>FITNESS</h3>
+          <p>Una línea de entrenamiento físico integral con rutinas de fuerza, movilidad, resistencia y acondicionamiento, pensada para complementar el boxeo y acompañar distintos objetivos de actividad.</p>
+          <span class="soon">Próximamente</span>
+        </article>
+
+        <article class="future-card reveal" aria-disabled="true">
+          <div class="future-index">03.</div>
+          <h3>PRIMAL<br>GEAR</h3>
+          <p>La futura línea de accesorios, indumentaria y equipamiento deportivo del ecosistema PRIMAL. Diseñada para llevar la identidad de entrenamiento más allá de la pantalla.</p>
+          <span class="soon">Próximamente</span>
+        </article>
+
+        <article class="future-card reveal" aria-disabled="true">
+          <div class="future-index">04.</div>
+          <h3>PRIMAL<br>CLUB</h3>
+          <p>Un espacio pensado para conectar a quienes entrenan con PRIMAL: retos compartidos, hitos personales, reconocimientos y nuevas experiencias de comunidad.</p>
+          <span class="soon">Próximamente</span>
+        </article>
+
+        <article class="future-card reveal" aria-disabled="true">
+          <div class="future-index">05.</div>
+          <h3>PRIMAL<br>HEIGHT TRAINING</h3>
+          <p>Una futura experiencia de acondicionamiento y resistencia inspirada en los desafíos del entrenamiento en altura, con sesiones progresivas y objetivos de rendimiento. Concepto en desarrollo.</p>
+          <span class="soon">Próximamente</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section philosophy" id="filosofia">
+    <div class="container philosophy-grid">
+      <div class="reveal">
+        <div class="eyebrow">Nuestra filosofía</div>
+        <h2>BUILT TO<br><em>GO FURTHER.</em></h2>
+      </div>
+      <div class="philosophy-copy reveal">
+        <p>PRIMAL Products nace para convertir la tecnología en una experiencia de entrenamiento más directa, accesible y emocionante.</p>
+        <div class="principles">
+          <div class="principle"><div class="num">01</div><div><h3>SIN FRICCIÓN.</h3><p>Entra, configura y empieza. Menos pasos entre tú y el entrenamiento.</p></div></div>
+          <div class="principle"><div class="num">02</div><div><h3>A TU RITMO.</h3><p>La experiencia se adapta al tiempo y al nivel que quieras llevar.</p></div></div>
+          <div class="principle"><div class="num">03</div><div><h3>CON INTENCIÓN.</h3><p>Diseñamos cada interacción para ayudarte a mantener el foco en lo que estás haciendo.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container cta-inner reveal">
+      <div>
+        <div class="eyebrow">Disponible ahora</div>
+        <h2>TU SIGUIENTE ROUND<br>EMPIEZA HOY.</h2>
+      </div>
+      <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Abrir PRIMAL Boxing ↗</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container"><p>2026 PRIMALproducts</p></div>
+</footer>
+
+<script>
+  // Dominio personalizado actual de PRIMAL Boxing.
+  const BOXING_URL = 'https://primalproducts.com.co/Primal-Boxing/';
+  document.querySelectorAll('[data-boxing-link]').forEach(link => link.href = BOXING_URL);
+
+  const toggle = document.getElementById('mobileToggle');
+  const nav = document.getElementById('navigation');
+
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    document.body.classList.toggle('menu-open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.textContent = open ? '✕' : '☰';
+  });
+
+  nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+    nav.classList.remove('open');
+    document.body.classList.remove('menu-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.textContent = '☰';
+  }));
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+  }
+</script>
 </body>
 </html>
