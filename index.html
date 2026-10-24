@@ -54,6 +54,11 @@
     .navlinks{display:flex;align-items:center;gap:30px;font-size:13px;font-weight:700}
     .navlinks>a:not(.btn){color:#D4D4D7;transition:.2s ease}
     .navlinks>a:not(.btn):hover{color:#fff}
+    .header-controls{display:flex;align-items:center;gap:16px;flex-shrink:0}
+    .language-switch{display:inline-flex;align-items:center;gap:2px;padding:3px;border:1px solid #383940;background:#131418;flex-shrink:0}
+    .language-switch button{border:0;background:transparent;color:#a4a5ac;padding:8px 10px;min-width:38px;min-height:35px;font:800 11px/1 var(--body);letter-spacing:1px;cursor:pointer;transition:background .2s,color .2s}
+    .language-switch button[aria-pressed="true"]{background:var(--red);color:white}
+    .language-switch button:focus-visible,.mobile-toggle:focus-visible{outline:2px solid #fff;outline-offset:3px}
     .mobile-toggle{display:none;position:relative;border:1px solid var(--line2);background:transparent;color:#fff;width:46px;height:42px;cursor:pointer;padding:0}
     .mobile-toggle .bar{position:absolute;left:10px;right:10px;height:2px;background:#fff;transition:transform .22s ease,opacity .18s ease,top .22s ease}
     .mobile-toggle .bar:nth-child(1){top:12px}
@@ -194,8 +199,26 @@
     .reveal{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease}
     .reveal.visible{opacity:1;transform:none}
 
+
+    /* Fotografías de cada línea PRIMAL */
+    .flagship-visual{min-height:500px;background:#0b0c0f}
+    .flagship-visual::before{display:none}
+    .flagship-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:52% center}
+    .flagship-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(9,10,13,.18),transparent 65%);pointer-events:none}
+    .future-card{padding:0;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+    .future-card::before{display:none}
+    .future-photo-wrap{width:100%;height:215px;overflow:hidden;position:relative;background:#1b1b20}
+    .future-photo{display:block;width:100%;height:100%;object-fit:cover;object-position:center;filter:saturate(.9);transition:transform .45s ease}
+    .future-photo-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(10,11,14,.5),transparent 75%)}
+    .future-card:hover .future-photo{transform:scale(1.025)}
+    .future-card-content{padding:23px 28px 70px;flex:1}
+    .future-card h3{margin:16px 0 14px}
+    .future-card p{padding-bottom:0;margin:0}
+    .future-card .soon{bottom:25px}
+    @media(max-width:560px){.future-photo-wrap{height:190px}.flagship-visual{min-height:300px}}
+
     @media (max-width:900px){
-      .nav{height:68px}.mobile-toggle{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:22px;background:#101115;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:18px}.navlinks.open{display:flex}
+      .nav{height:68px;gap:10px}.header-controls{gap:9px}.mobile-toggle{display:block}.navlinks{display:none;position:absolute;top:68px;left:0;right:0;padding:22px;background:#101115;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:18px}.navlinks.open{display:flex}
       .hero{min-height:auto}.hero-grid{grid-template-columns:1fr;padding:72px 0 78px}
       .section{padding:78px 0}.section-head{display:block}.section-head>p{margin-top:20px}
       .flagship{grid-template-columns:1fr}.flagship-visual{min-height:460px}
@@ -205,7 +228,7 @@
     }
     @media (max-width:560px){
       .container{width:min(100% - 30px,1180px)}
-      .brand-icon{width:32px;height:40px}.brand-copy{font-size:23px}.brand-copy small{letter-spacing:2.8px;font-size:7px}
+      .language-switch{padding:2px}.language-switch button{padding:7px 7px;min-width:30px;min-height:34px}.brand-icon{width:32px;height:40px}.brand-copy{font-size:23px}.brand-copy small{letter-spacing:2.8px;font-size:7px}
       h1{font-size:clamp(72px,22vw,108px)}.intro{font-size:16px}.hero-actions{display:grid}.hero-actions .btn{width:100%}
       .flagship-content{padding:34px 24px}.flagship h3{font-size:70px}.flagship-visual{min-height:420px}.mock-phone{width:210px;height:385px}.mock-phone .mock-time{font-size:68px}
       .principle{grid-template-columns:48px 1fr}.cta-band{padding:54px 0}
@@ -222,14 +245,19 @@
       <span class="brand-copy">PRIMAL <b>PRODUCTS</b><small>BUILT TO GO FURTHER</small></span>
     </a>
 
-    <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
-
     <nav class="navlinks" id="navigation" aria-label="Principal">
       <a href="#boxing">PRIMAL Boxing</a>
       <a href="#universo">Universo PRIMAL</a>
       <a href="#filosofia">Filosofía</a>
       <a class="btn" data-boxing-link href="https://primalproducts.com.co/Primal-Boxing/">Entrenar ahora</a>
     </nav>
+    <div class="header-controls">
+      <div class="language-switch" role="group" aria-label="Seleccionar idioma" id="languageSwitch">
+        <button type="button" data-lang="es" aria-pressed="true" lang="es">ES</button>
+        <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+      </div>
+      <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="navigation" aria-label="Abrir menú"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button>
+    </div>
   </div>
 </header>
 
@@ -266,7 +294,7 @@
           <h3>PELEA<br>A TU RITMO.</h3>
           <p>Configura tu entrenamiento, escucha las combinaciones, avanza round a round y lleva la experiencia contigo desde el navegador.</p>
           <div class="features">
-            <span>Combinaciones guiadas</span>
+            <span>Jab · Recto · Gancho</span>
             <span>Rounds configurables</span>
             <span>Voz durante el entrenamiento</span>
             <span>Grabación de sesión</span>
@@ -276,15 +304,7 @@
         </div>
 
         <div class="flagship-visual">
-          <img class="flagship-icon" src="primal-icon.png" alt="" aria-hidden="true">
-          <div class="mock-phone" aria-hidden="true">
-            <small>PRIMAL BOXING</small>
-            <div class="mock-time">01:42</div>
-            <div class="mock-round">ROUND 04 / 08</div>
-            <div class="mock-line"></div>
-            <div class="mock-combo">YAB · YAB · RECTO</div>
-            <div class="mock-play"></div>
-          </div>
+          <img class="flagship-photo" src="boxing.webp" alt="Boxeador entrenando golpes en un gimnasio de alta intensidad" loading="lazy" decoding="async">
         </div>
       </article>
     </div>
@@ -306,30 +326,42 @@
       </div>
       <div class="product-grid">
         <article class="future-card reveal" aria-disabled="true">
+          <div class="future-photo-wrap"><img class="future-photo" src="fitness.webp" alt="Imagen inspiradora de PRIMAL Fitness" loading="lazy" decoding="async"></div>
+          <div class="future-card-content">
           <div class="future-index">02.</div>
           <h3>PRIMAL<br>FITNESS</h3>
           <p>Una línea de entrenamiento físico integral con rutinas de fuerza, movilidad, resistencia y acondicionamiento, pensada para complementar el boxeo y acompañar distintos objetivos de actividad.</p>
+          </div>
           <span class="soon">Próximamente</span>
         </article>
 
         <article class="future-card reveal" aria-disabled="true">
+          <div class="future-photo-wrap"><img class="future-photo" src="gear.webp" alt="Imagen inspiradora de PRIMAL Gear" loading="lazy" decoding="async"></div>
+          <div class="future-card-content">
           <div class="future-index">03.</div>
           <h3>PRIMAL<br>GEAR</h3>
           <p>La futura línea de accesorios, indumentaria y equipamiento deportivo del ecosistema PRIMAL. Diseñada para llevar la identidad de entrenamiento más allá de la pantalla.</p>
+          </div>
           <span class="soon">Próximamente</span>
         </article>
 
         <article class="future-card reveal" aria-disabled="true">
+          <div class="future-photo-wrap"><img class="future-photo" src="club.webp" alt="Imagen inspiradora de PRIMAL Club" loading="lazy" decoding="async"></div>
+          <div class="future-card-content">
           <div class="future-index">04.</div>
           <h3>PRIMAL<br>CLUB</h3>
           <p>Un espacio pensado para conectar a quienes entrenan con PRIMAL: retos compartidos, hitos personales, reconocimientos y nuevas experiencias de comunidad.</p>
+          </div>
           <span class="soon">Próximamente</span>
         </article>
 
         <article class="future-card reveal" aria-disabled="true">
+          <div class="future-photo-wrap"><img class="future-photo" src="height.webp" alt="Imagen inspiradora de PRIMAL Height Training" loading="lazy" decoding="async"></div>
+          <div class="future-card-content">
           <div class="future-index">05.</div>
           <h3>PRIMAL<br>HEIGHT TRAINING</h3>
           <p>Una futura experiencia de acondicionamiento y resistencia inspirada en los desafíos del entrenamiento en altura, con sesiones progresivas y objetivos de rendimiento. Concepto en desarrollo.</p>
+          </div>
           <span class="soon">Próximamente</span>
         </article>
       </div>
@@ -389,6 +421,100 @@
     toggle.classList.remove('open');
     toggle.setAttribute('aria-expanded', 'false');
   }));
+
+
+  // Switch all visible copy in place, while keeping the current section and URLs.
+  const translations = {
+    "Universo PRIMAL": "PRIMAL Universe",
+    "Filosofía": "Philosophy",
+    "Entrenar ahora": "Train now",
+    "PRIMAL Products · Digital training experiences": "PRIMAL Products · Digital training experiences",
+    "UN UNIVERSO.": "ONE UNIVERSE.",
+    "INFINITAS FORMAS": "ENDLESS WAYS",
+    "DE SUPERARTE.": "TO GO FURTHER.",
+    "PRIMAL Products reúne experiencias digitales, entrenamiento, equipamiento y comunidad en un solo ecosistema.": "PRIMAL Products brings together digital experiences, training, equipment, and community in one ecosystem.",
+    "abre el camino: nuestro primer producto disponible para entrenar hoy.": "leads the way: our first product, ready for you to train today.",
+    "Entrar a PRIMAL Boxing": "Enter PRIMAL Boxing",
+    "Explora el ecosistema": "Explore the ecosystem",
+    "Disponible desde el navegador · Sin registro · Entrena a tu ritmo": "Available in your browser · No sign-up · Train at your pace",
+    "Producto principal": "Featured product",
+    "Una experiencia de boxeo guiada por voz para practicar combinaciones, configurar rounds y mantenerte enfocado en la pelea.": "A voice-guided boxing experience to practice combinations, customize rounds, and stay focused on the fight.",
+    "Disponible ahora": "Available now",
+    "PELEA": "FIGHT",
+    "A TU RITMO.": "AT YOUR PACE.",
+    "Configura tu entrenamiento, escucha las combinaciones, avanza round a round y lleva la experiencia contigo desde el navegador.": "Set up your workout, follow spoken combinations, progress round by round, and take the experience anywhere in your browser.",
+    "Jab · Recto · Gancho": "Jab · Cross · Hook",
+    "Rounds configurables": "Customizable rounds",
+    "Voz durante el entrenamiento": "Voice coaching",
+    "Grabación de sesión": "Session recording",
+    "Trofeos y progreso": "Trophies and progress",
+    "Entrar al ring": "Step into the ring",
+    "El ecosistema · 01 activo + 4 en desarrollo": "The ecosystem · 01 live + 4 in development",
+    "EL UNIVERSO": "THE PRIMAL",
+    "PRIMAL.": "UNIVERSE.",
+    "Cinco líneas, una misma filosofía: entrenar con intención. PRIMAL Boxing ya está disponible; Fitness, Height Training, Gear y Club son conceptos del ecosistema que todavía están en desarrollo.": "Five lines, one philosophy: train with purpose. PRIMAL Boxing is available now; Fitness, Height Training, Gear, and Club are concepts still in development.",
+    "01 · DISPONIBLE AHORA": "01 · AVAILABLE NOW",
+    "Entrenamiento de boxeo desde el navegador: rounds configurables, combinaciones guiadas por voz, grabación de sesiones y logros. Entra al ring desde cualquier lugar.": "Browser-based boxing training: customizable rounds, voice-guided combinations, session recording, and achievements. Step into the ring from anywhere.",
+    "Explorar PRIMAL Boxing": "Explore PRIMAL Boxing",
+    "Una línea de entrenamiento físico integral con rutinas de fuerza, movilidad, resistencia y acondicionamiento, pensada para complementar el boxeo y acompañar distintos objetivos de actividad.": "A full-body training line with strength, mobility, endurance, and conditioning routines, designed to complement boxing and support a range of fitness goals.",
+    "La futura línea de accesorios, indumentaria y equipamiento deportivo del ecosistema PRIMAL. Diseñada para llevar la identidad de entrenamiento más allá de la pantalla.": "A future line of sports accessories, apparel, and equipment from the PRIMAL ecosystem, bringing the training identity beyond the screen.",
+    "Un espacio pensado para conectar a quienes entrenan con PRIMAL: retos compartidos, hitos personales, reconocimientos y nuevas experiencias de comunidad.": "A space for people who train with PRIMAL to connect through shared challenges, personal milestones, recognition, and new community experiences.",
+    "Una futura experiencia de acondicionamiento y resistencia inspirada en los desafíos del entrenamiento en altura, con sesiones progresivas y objetivos de rendimiento. Concepto en desarrollo.": "A future conditioning and endurance experience inspired by the challenges of high-altitude training, with progressive sessions and performance goals. Concept in development.",
+    "Próximamente": "Coming soon",
+    "Nuestra filosofía": "Our philosophy",
+    "PRIMAL Products nace para convertir la tecnología en una experiencia de entrenamiento más directa, accesible y emocionante.": "PRIMAL Products was created to make technology part of a more direct, accessible, and exciting training experience.",
+    "SIN FRICCIÓN.": "NO FRICTION.",
+    "Entra, configura y empieza. Menos pasos entre tú y el entrenamiento.": "Jump in, set up, and get started. Fewer steps between you and your workout.",
+    "La experiencia se adapta al tiempo y al nivel que quieras llevar.": "The experience adapts to the time and level you choose.",
+    "CON INTENCIÓN.": "WITH PURPOSE.",
+    "Diseñamos cada interacción para ayudarte a mantener el foco en lo que estás haciendo.": "We design every interaction to help you stay focused on what you are doing.",
+    "TU SIGUIENTE ROUND": "YOUR NEXT ROUND",
+    "EMPIEZA HOY.": "STARTS TODAY.",
+    "Abrir PRIMAL Boxing": "Open PRIMAL Boxing"
+};
+  const reverseTranslations = Object.fromEntries(Object.entries(translations).map(([es,en]) => [en,es]));
+  const contentRoot = document.querySelector('body');
+  const nodes = [];
+  const walker = document.createTreeWalker(contentRoot, NodeFilter.SHOW_TEXT, {
+    acceptNode(node) {
+      if (node.parentElement.closest('script,style,.language-switch')) return NodeFilter.FILTER_REJECT;
+      return Object.hasOwn(translations, node.nodeValue.trim()) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  while (walker.nextNode()) nodes.push({node:walker.currentNode, es:walker.currentNode.nodeValue});
+  const translatableAttributes = [
+    ['.brand','aria-label','PRIMAL Products, inicio','PRIMAL Products, home'],
+    ['.brand-icon','alt','Símbolo PRIMAL','PRIMAL symbol'],
+    ['#mobileToggle','aria-label','Abrir menú','Open menu'],
+    ['#navigation','aria-label','Principal','Main navigation'],
+    ['#languageSwitch','aria-label','Seleccionar idioma','Select language'],
+    ['.flagship-photo','alt','Boxeador entrenando golpes en un gimnasio de alta intensidad','Boxer training in a high-intensity gym'],
+    ['img[src="fitness.webp"]','alt','Imagen inspiradora de PRIMAL Fitness','Inspirational PRIMAL Fitness image'],
+    ['img[src="gear.webp"]','alt','Imagen inspiradora de PRIMAL Gear','Inspirational PRIMAL Gear image'],
+    ['img[src="club.webp"]','alt','Imagen inspiradora de PRIMAL Club','Inspirational PRIMAL Club image'],
+    ['img[src="height.webp"]','alt','Imagen inspiradora de PRIMAL Height Training','Inspirational PRIMAL Height Training image']
+  ];
+  function switchLanguage(lang) {
+    const isEnglish = lang === 'en';
+    nodes.forEach(({node,es}) => {
+      const trimmed = es.trim();
+      node.nodeValue = es.replace(trimmed, isEnglish ? translations[trimmed] : trimmed);
+    });
+    translatableAttributes.forEach(([selector,attr,es,en]) => {
+      const el = document.querySelector(selector);
+      if(el) el.setAttribute(attr,isEnglish ? en : es);
+    });
+    document.querySelectorAll('#languageSwitch button').forEach(btn => btn.setAttribute('aria-pressed',String(btn.dataset.lang === lang)));
+    document.documentElement.lang = lang;
+    document.querySelector('meta[name="description"]').content = isEnglish
+      ? 'PRIMAL Products: a training experience ecosystem. Discover PRIMAL Boxing, Fitness, Height Training, Gear and Club. Boxing available now.'
+      : 'PRIMAL Products: un ecosistema de experiencias de entrenamiento. Explora PRIMAL Boxing, Fitness, Height Training, Gear y Club. Boxing disponible ahora.';
+    try { localStorage.setItem('primal-language', lang); } catch(e) {}
+  }
+  document.querySelectorAll('#languageSwitch button').forEach(btn => btn.addEventListener('click', () => switchLanguage(btn.dataset.lang)));
+  let savedLanguage = 'es';
+  try { savedLanguage = localStorage.getItem('primal-language') === 'en' ? 'en' : 'es'; } catch(e) {}
+  switchLanguage(savedLanguage);
 
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => {
