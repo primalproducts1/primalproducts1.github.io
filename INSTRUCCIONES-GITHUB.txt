@@ -1,0 +1,44 @@
+PRIMAL Products — LISTO PARA GITHUB PAGES
+=======================================
+Dominio principal: https://primalproducts.com.co/
+
+1. Extrae el ZIP. Sube el contenido de esta carpeta directamente a la RAÍZ
+   del repositorio de la landing (no subas la carpeta contenedora).
+2. Reemplaza index.html y los recursos con los archivos del ZIP.
+3. Sube CNAME con el contenido exacto: primalproducts.com.co
+4. Si el dominio ya funciona, NO cambies los registros DNS existentes.
+5. En GitHub: Settings > Pages > Build and deployment: Deploy from a branch.
+   Elige la rama publicada y /(root). En Custom domain confirma primalproducts.com.co.
+   Activa Enforce HTTPS cuando esté disponible.
+6. IMPORTANTÍSIMO: si PRIMAL Boxing o PRIMAL Store viven en carpetas dentro
+   del mismo repositorio, NO borres ni reemplaces esas carpetas.
+
+GOOGLE ANALYTICS 4
+==================
+- Measurement ID integrado: G-DNRECC03GK
+- Google Analytics solo se carga después de elegir "Aceptar" en el aviso.
+- Elección guardada en localStorage: primal_cookie_consent_v1.
+- Cambiar de decisión: enlace "Cookies" en el pie de la página.
+- Eventos: page_view y primal_service_click (service boxing/store/whatsapp).
+- Para probar, acepta cookies y abre Reports > Realtime en GA4.
+- Nota: usar el mismo ID en Boxing/Store requiere que esas páginas tengan
+  su propia instalación del tag: este ZIP solo actualiza la HOME.
+
+ENLACES
+=======
+Boxing:   https://primalproducts.com.co/Primal-Boxing/
+Store:    https://primalproducts.com.co/Store/
+WhatsApp: https://wa.me/573152591115
+
+Archivos principales: index.html, CNAME, primal-icon.png, primal-share.jpg,
+brush-stroke.png, boxing.webp, store.webp, fitness.webp.
+
+Esta publicación no configura DNS por sí sola ni modifica sitios de Boxing o Store.
+El aviso de preferencias en el navegador no equivale a guardar una prueba
+centralizada del consentimiento.
+
+ACTUALIZACIÓN CTA (noviembre de 2026)
+- Hero: Empezar a entrenar y debajo Comprar ahora (brush blanco, texto negro).
+- PRIMAL Store: botón Comprar ahora -> https://primalproducts.com.co/Store/
+- PRIMAL Fitness: botón Próximamente visible y deshabilitado.
+- El archivo CNAME y el consentimiento de Analytics G-DNRECC03GK se mantienen.
